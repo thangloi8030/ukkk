@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quà Tặng Valentine</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f8e6e6;
+        }
+        #password-section, #confirmation-section, #message-section, #heart-section {
+            display: none;
+        }
+        #heart {
+            font-size: 50px;
+            color: red;
+            animation: heartbeat 1.5s infinite;
+        }
+        @keyframes heartbeat {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        button {
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #ff3333;
+        }
+        #no-button {
+            position: relative;
+            left: 0;
+            transition: left 0.3s;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Màn hình nhập mật khẩu -->
+    <div id="password-section">
+        <h2>Nhập mật khẩu để nhận quà:</h2>
+        <input type="password" id="password" placeholder="Nhập mật khẩu" />
+        <button onclick="checkPassword()">Gửi</button>
+    </div>
+
+    <!-- Màn hình xác nhận -->
+    <div id="confirmation-section">
+        <h2>Em có chắc chắn muốn nhận phần quà không?</h2>
+        <button id="no-button" onclick="moveButton()">No</button>
+        <button onclick="showMessage()">Yes</button>
+    </div>
+
+    <!-- Màn hình thông điệp tình yêu -->
+    <div id="message-section">
+        <h2>Anh chúc bé iuu của anh Valentine vui vẻ!</h2>
+        <p>Em chính là thiên thần của anh, là người anh yêu nhất. Chúc em một ngày Valentine đầy yêu thương!</p>
+    </div>
+
+    <!-- Trái tim nhấp nháy -->
+    <div id="heart-section">
+        <p id="heart">❤️</p>
+    </div>
+
+    <script>
+        // Hiển thị màn hình nhập mật khẩu
+        document.getElementById('password-section').style.display = 'block';
+
+        // Kiểm tra mật khẩu
+        function checkPassword() {
+            var password = document.getElementById('password').value;
+            if (password === "emyeuanh") {
+                document.getElementById('password-section').style.display = 'none';
+                document.getElementById('confirmation-section').style.display = 'block';
+            } else {
+                alert('Mật khẩu sai, thử lại!');
+            }
+        }
+
+        // Di chuyển nút "No" ra chỗ khác
+        function moveButton() {
+            var noButton = document.getElementById('no-button');
+            noButton.style.left = '150px'; // Điều chỉnh vị trí "No"
+        }
+
+        // Hiển thị thông điệp tình yêu và trái tim nhấp nháy
+        function showMessage() {
+            document.getElementById('confirmation-section').style.display = 'none';
+            document.getElementById('message-section').style.display = 'block';
+            document.getElementById('heart-section').style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>
